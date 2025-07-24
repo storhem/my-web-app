@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор доставки</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        h2 { margin-bottom: 10px; }
+        select, input, button {
+            display: block;
+            margin: 10px 0;
+            padding: 8px;
+            font-size: 14px;
+            width: 220px;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+<h2>Калькулятор доставки</h2>
+
+<select id="city"></select>
+<input type="number" id="weight" placeholder="Вес, кг">
+<button id="calcBtn">Рассчитать</button>
+
+<div id="result"></div>
+
+<script>
+    // Загружаем список городов
+    fetch('getCities.php')
+        .then(response => response.json())
+        .then(data => {
+            const citySelect = document.getElementById('city');
+            data.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                if (city === 'Москва') option.selected = true;
+                citySelect.appendChild(option);
+            });
+        })
+        .catch(() => {
+            alert('Ошибка загрузки списка городов');
+        });
+
+    // Обработка кнопки
+    document.getElementById('calcBtn').addEventListener('click', () => {
+        const city = document.getElementById('city').value;
+        const weight = document.getElementById('weight').value;
+        const resultDiv = document.getElementById('result');
+
+        if (!weight || weight <= 0) {
+            resultDiv.textContent = 'Введите корректный вес (кг)';
+            resultDiv.className = 'error';
+            return;
+        }
+
+        resultDiv.textContent = 'Загрузка...';
+        resultDiv.className = '';
+
+        fetch('calculate.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: `city=${encodeURIComponent(city)}&weight=${encodeURIComponent(weight)}`
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'OK') {
+                    resultDiv.textContent = data.message;
+                    resultDiv.className = '';
+                } else {
+                    resultDiv.textContent = data.message;
+                    resultDiv.className = 'error';
+                }
+            })
+            .catch(() => {
+                resultDiv.textContent = 'Ошибка запроса';
+                resultDiv.className = 'error';
+            });
+    });
+</script>
+</body>
+</html>

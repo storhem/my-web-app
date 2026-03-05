@@ -1,238 +1,240 @@
-Задание 1. Список праздников
-Описание
-Простое веб-приложение для отображения предстоящих праздников и событий. Данные можно хранить в массиве или JSON-файле. Выводится список праздников по дате.
-
-Технологии
-PHP
-
-HTML, CSS
-
-JavaScript
-
-Как запустить
-Установите PHP (если не установлен).
-
-Склонируйте проект:
-
-git clone https://github.com/yourusername/holiday-reminder.git
-Запустите сервер в папке проекта:
-
-php -S localhost:8000
-Откройте в браузере:
-
-http://localhost:8000
-
-Задание 2. Верстка
-Описание
-Шаблон сайта интернет-магазина украшений. Используются HTML5, CSS3 и JavaScript. Шаблон можно адаптировать под любые задачи витрины товаров или лендинга.
-
-Содержимое шаблона
-Шапка сайта (логотип и меню)
-
-Главный баннер
-
-Категории товаров
-
-Популярные товары
-
-Раздел с блогом
-
-Подвал сайта
-
-Структура проекта
-
-index.html
-style.css
-/css/vendor.css
-/js/jquery.min.js
-/js/plugins.js
-/js/script.js
-/images/...
-Как запустить
-Склонируйте репозиторий:
-
-git clone https://github.com/USERNAME/my-jewelry-shop.git
-Откройте файл index.html в браузере.
-
-Задачи PHP/SQL
-1. Счетчик посещений страницы
-Описание
-Каждый раз при загрузке страницы значение счётчика увеличивается на 1. Также отображается текущее серверное время.
-
-Вывод на странице:
-
-Страница была загружена N раз. Текущее время: HH:MM.
-Хранение данных:
-Счётчик хранится в текстовом файле counter.txt.
-
-Как использовать:
-
-Скопируйте код в файл counter.php.
-
-Запустите сервер:
-
-php -S localhost:8000
-Откройте в браузере:
-
-http://localhost:8000/counter.php
-
-2. Гостевая книга
-Описание
-Форма для добавления сообщений с именем пользователя. Все записи сохраняются в файл guestbook.csv и отображаются на странице.
-
-Особенности:
-
-Имя необязательное. По умолчанию используется "Анонимно".
-
-Сообщения отображаются от новых к старым.
-
-Сообщения сохраняются в CSV с разделителем ;.
-
-Файлы:
-
-guestbook.php — основной файл
-
-guestbook.csv — создаётся автоматически при первом сообщении
-
-Как использовать:
-
-Поместите файл guestbook.php в корень проекта.
-
-Запустите сервер:
-
-php -S localhost:8000
-Откройте:
-
-http://localhost:8000/guestbook.php
-
-3. Калькулятор доставки
-Описание
-Позволяет выбрать город и указать вес груза. После отправки формы рассчитывается стоимость доставки.
-
-Особенности:
-
-Список городов загружается через getCities.php и кэшируется.
-
-Стоимость рассчитывается через calculate.php.
-
-Используется AJAX-запрос без перезагрузки страницы.
-
-Ошибки отображаются красным текстом.
-
-Файлы:
-
-delivery.html — HTML-страница с формой
-
-getCities.php — возвращает список городов
-
-calculate.php — рассчитывает цену
-
-Внешние API:
-
-Список городов: exercise.develop.maximaster.ru/service/city/
-
-Расчет доставки: exercise.develop.maximaster.ru/service/delivery/?city=...&weight=...
-
-Как использовать:
-
-Создайте все файлы и разместите их в папке проекта.
-
-Запустите сервер:
-
-php -S localhost:8000
-Откройте:
-
-http://localhost:8000/delivery.html
-
-4. REST API на PHP (с JSON)
-Описание
-REST API на PHP без базы данных. Все данные хранятся в products.json. Реализованы методы для работы с товарами.
-
-Возможности:
-
-Получение всех товаров
-
-Получение товара по ID
-
-Добавление нового товара
-
-Обновление товара
-
-Удаление товара
-
-Структура проекта:
-
-pgsql
-Копировать
-Редактировать
+# Web Application Portfolio
+
+A collection of web applications demonstrating various PHP, JavaScript, and frontend development skills. This repository contains multiple projects including a holiday reminder, e-commerce template, and several PHP/SQL utilities.
+
+## Table of Contents
+- [Projects Overview](#projects-overview)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Installation & Setup](#installation--setup)
+- [Project Details](#project-details)
+  - [1. Holiday Reminder](#1-holiday-reminder)
+  - [2. Jewelry Store Template](#2-jewelry-store-template)
+  - [3. PHP/SQL Utilities](#3-phpsql-utilities)
+- [API Documentation](#api-documentation)
+- [Requirements](#requirements)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Projects Overview
+
+This repository contains five distinct web applications:
+
+1. **Holiday Reminder** - A simple web app displaying upcoming holidays and events
+2. **Jewelry Store Template** - Responsive e-commerce website template
+3. **Page View Counter** - Tracks page visits with server time display
+4. **Guestbook Application** - CSV-based message board system
+5. **Delivery Calculator** - AJAX-powered shipping cost calculator
+6. **RESTful API** - JSON-based product management API
+
+## Technologies Used
+
+- **Backend:** PHP 7.0+
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Database:** File-based storage (JSON, CSV, TXT)
+- **Frameworks:** Slim Framework (for REST API)
+- **Tools:** Composer, jQuery, Modernizr
+- **Development:** PHP Built-in Server, PHPStorm recommended
+
+## Project Structure
 my-web-app/
-├── PHP/
-│   └── rest_api/
-│       ├── data/
-│       │   └── products.json
-│       └── public/
-│           └── index.php
-├── vendor/          (устанавливается через Composer)
+├── holiday-reminder/
+│   ├── index.php
+│   └── holidays.json
+├── jewelry-shop/
+│   ├── index.html
+│   ├── style.css
+│   ├── css/
+│   │   └── vendor.css
+│   ├── js/
+│   │   ├── jquery.min.js
+│   │   ├── plugins.js
+│   │   └── script.js
+│   └── images/
+├── php-utilities/
+│   ├── counter.php
+│   ├── counter.txt
+│   ├── guestbook.php
+│   └── guestbook.csv
+├── delivery-calculator/
+│   ├── delivery.html
+│   ├── getCities.php
+│   └── calculate.php
+├── rest-api/
+│   ├── data/
+│   │   └── products.json
+│   ├── public/
+│   │   └── index.php
+│   └── vendor/
 ├── composer.json
 └── README.md
-Как запустить API-сервер:
 
-Перейдите в папку my-web-app:
+## Installation & Setup
 
-cd my-web-app
-Запустите сервер:
+### Prerequisites
+- PHP 7.0 or higher installed on your system
+- Composer (for REST API project)
+- Git (optional, for cloning)
 
-php -S localhost:8000 -t PHP/rest_api/public
-API будет доступен по адресу:
+### Quick Start
 
-http://localhost:8000/api/products
-Поддерживаемые маршруты:
+1. **Clone the repository:**
+   git clone https://github.com/yourusername/my-web-app.git
+   cd my-web-app
 
-Метод	URI	Описание
-GET	/api/products	Получить все товары
-GET	/api/products/{id}	Получить товар по ID
-POST	/api/products	Добавить товар
-PUT	/api/products/{id}	Обновить товар по ID
-DELETE	/api/products/{id}	Удалить товар по ID
+2. **Install dependencies (for REST API):**
+   composer install
 
-Примеры JSON-запросов:
+3. **Start the PHP development server:**
+   php -S localhost:8000
 
-POST /api/products
+4. **Access the applications:**
+   - Main index: http://localhost:8000
+   - Individual projects (see specific URLs below)
 
-{
-  "name": "Клавиатура",
-  "price": 1299
-}
-PUT /api/products/1
+## Project Details
 
-{
-  "name": "Ноутбук",
-  "price": 55999
-}
-Содержимое файла products.json:
+### 1. Holiday Reminder
+A lightweight application displaying upcoming holidays sorted by date.
 
+**Features:**
+- Dynamic holiday list from JSON data source
+- Chronological sorting of events
+- Clean, minimalist interface
+
+**Technologies:** PHP, HTML/CSS, JavaScript
+
+**Access:** http://localhost:8000/holiday-reminder/
+
+### 2. Jewelry Store Template
+Professional e-commerce template suitable for jewelry stores or any retail website.
+
+**Template Components:**
+- **Header:** Logo and responsive navigation menu
+- **Hero Banner:** Full-width promotional section
+- **Categories Grid:** Product category showcase
+- **Popular Products:** Featured items display
+- **Blog Section:** Latest articles preview
+- **Footer:** Complete with contact info and links
+
+**Access:** Open `/jewelry-shop/index.html` directly in browser
+
+### 3. PHP/SQL Utilities
+
+#### Page View Counter
+Tracks page loads and displays server time.
+
+**Implementation:**
+- Persistent storage in `counter.txt`
+- Auto-incrementing visit counter
+- Real-time server time display
+
+**Access:** http://localhost:8000/php-utilities/counter.php
+
+#### Guestbook Application
+CSV-based message board with anonymous posting.
+
+**Features:**
+- Optional name field (defaults to "Anonymous")
+- Semicolon-delimited CSV storage
+- Messages displayed newest first
+- Automatic file creation
+
+**Access:** http://localhost:8000/php-utilities/guestbook.php
+
+#### Delivery Calculator
+AJAX-powered shipping cost calculator with city autocomplete.
+
+**Features:**
+- City selection from external API
+- Real-time weight-based price calculation
+- Client-side caching of city data
+- Error handling with visual feedback
+- No page reloads (AJAX implementation)
+
+**API Endpoints Used:**
+- Cities: `exercise.develop.maximaster.ru/service/city/`
+- Delivery Calculation: `exercise.develop.maximaster.ru/service/delivery/`
+
+**Access:** http://localhost:8000/delivery-calculator/delivery.html
+
+### 4. RESTful API
+Complete CRUD API for product management using JSON file storage.
+
+**Base URL:** http://localhost:8000/rest-api/public/api/products
+
+#### Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/products` | Retrieve all products |
+| GET | `/api/products/{id}` | Get single product by ID |
+| POST | `/api/products` | Create new product |
+| PUT | `/api/products/{id}` | Update existing product |
+| DELETE | `/api/products/{id}` | Remove product |
+
+#### Request Examples
+
+**Create Product (POST):**
+curl -X POST http://localhost:8000/rest-api/public/api/products \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Wireless Keyboard", "price": 2999}'
+
+
+**Update Product (PUT):**
+curl -X PUT http://localhost:8000/rest-api/public/api/products/1 \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Mechanical Keyboard", "price": 4599}'
+
+
+#### Sample Data (products.json)
 [
-  { "id": 1, "name": "Книга", "price": 299.99 },
-  { "id": 2, "name": "Телефон", "price": 12999 }
+  { "id": 1, "name": "Book: PHP Programming", "price": 29.99 },
+  { "id": 2, "name": "Smartphone", "price": 299.99 }
 ]
-Тестирование API:
 
-Установите расширение Talend API Tester.
 
-При отправке POST/PUT-запросов указывайте заголовок:
+## Requirements
 
+- **PHP:** Version 7.0 or higher
+- **Web Server:** Built-in PHP server or Apache/Nginx
+- **Browser:** Modern browser with JavaScript enabled
+- **Internet Connection:** Required for delivery calculator API calls
+- **Recommended IDE:** PHPStorm, VS Code, or similar
+
+## Testing
+
+### API Testing
+Use tools like:
+- **Talend API Tester** (Chrome extension)
+- **Postman**
+- **cURL** (command line)
+
+**Important:** All POST/PUT requests must include header:
+```
 Content-Type: application/json
-Важно:
+```
 
-Данные сохраняются только в файл products.json.
+### Browser Testing
+- Chrome DevTools for JavaScript debugging
+- Firefox Developer Edition for responsive design testing
 
-Без авторизации.
+## Notes & Limitations
 
-Используется Slim Framework для маршрутизации.
+- Data persistence is file-based (no database required)
+- No authentication/authorization implemented
+- REST API uses Slim Framework for routing
+- Delivery calculator requires active internet connection
+- All file paths are relative to project root
 
-Требования
-PHP 7.0 и выше
+## Contributing
 
-Локальный веб-сервер (например, встроенный PHP-сервер)
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-Рекомендуется: PHPStorm
+## License
+
+This project is open-source and available under the MIT License.
